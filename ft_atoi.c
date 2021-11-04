@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajaidi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 17:21:47 by ajaidi            #+#    #+#             */
-/*   Updated: 2021/11/02 17:22:42 by ajaidi           ###   ########.fr       */
+/*   Created: 2021/11/02 17:38:16 by ajaidi            #+#    #+#             */
+/*   Updated: 2021/11/03 11:09:06 by ajaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+int	ft_atoi(const char *str)
 {
-	size_t	i;
-	int		j;
+	int	i;
+	int	s;
+	int	r;
 
 	i = 0;
-	while (haystack[i] && i < len)
+	s = 1;
+	r = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		j = 0;
-		while (haystack[i + j] == needle[j] && i + j < len)
-		{
-			if (needle[j + 1] == '\0')
-				return ((char *)(haystack + i));
-			j++;
-		}
+		if (str[i] == '-')
+			s *= -1;
 		i++;
 	}
-	return (NULL);
+	while (str[i] >= 48 && str[i] <= 57)
+	{
+		r *= 10;
+		r += str[i] - 48;
+		i++;
+	}
+	return (r * s);
 }
