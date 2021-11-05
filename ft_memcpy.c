@@ -6,16 +6,18 @@
 /*   By: ajaidi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 13:41:42 by ajaidi            #+#    #+#             */
-/*   Updated: 2021/11/01 14:07:43 by ajaidi           ###   ########.fr       */
+/*   Updated: 2021/11/05 16:36:51 by ajaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t	i;
 
+	if (!dst && !src)
+		return (NULL);
 	i = -1;
 	while (++i < n)
 		*(char *)(dst + i) = *(char *)(src + i);
