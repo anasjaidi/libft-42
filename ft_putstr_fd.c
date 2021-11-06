@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajaidi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/06 10:46:31 by ajaidi            #+#    #+#             */
-/*   Updated: 2021/11/06 18:10:23 by ajaidi           ###   ########.fr       */
+/*   Created: 2021/11/06 17:24:19 by ajaidi            #+#    #+#             */
+/*   Updated: 2021/11/06 17:24:21 by ajaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libf.h"
+#include "libft.h"
 
-int	ft_count(char *str, char c)
+void    ft_putstr_fd(char *s, int fd)
 {
-	int	i;
-	int	c;
-
-	i = -1;
-	c = 0;
-	while (str[++i])
-		if ((str[i] != c && str[i] == c) || (str[i] != c && str[i + 1] == '\0'))
-			c++;
-	return (c);
+    if (!s)
+        return ;
+    while (*s)
+        write(fd, s++, 1);
 }
