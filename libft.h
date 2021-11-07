@@ -6,7 +6,7 @@
 /*   By: ajaidi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 20:25:55 by ajaidi            #+#    #+#             */
-/*   Updated: 2021/11/06 09:38:01 by ajaidi           ###   ########.fr       */
+/*   Updated: 2021/11/07 20:36:05 by ajaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,16 @@
 
 # include <stdlib.h>
 # include <stddef.h>
+# include <unistd.h>
 
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_bzero(void *s, size_t n);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putendl_fd(char *s, int fd);
+char	**ft_split(char const *s, char c);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strtrim(char const *s1, char const *set);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);

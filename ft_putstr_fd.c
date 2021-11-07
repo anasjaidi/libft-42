@@ -6,16 +6,16 @@
 /*   By: ajaidi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 17:24:19 by ajaidi            #+#    #+#             */
-/*   Updated: 2021/11/06 17:24:21 by ajaidi           ###   ########.fr       */
+/*   Updated: 2021/11/07 20:38:15 by ajaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-    if (!s)
-        return ;
-    while (*s)
-        write(fd, s++, 1);
+	if (!s)
+		return ;
+	while (*s)
+		write(fd, s++, 1);
 }
