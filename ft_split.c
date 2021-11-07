@@ -1,17 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ajaidi <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/06 10:46:31 by ajaidi            #+#    #+#             */
-/*   Updated: 2021/11/06 18:48:08 by ajaidi           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "libf.h"
-
 int	ft_count(char *str, char c)
 {
 	int	i;
@@ -20,8 +6,9 @@ int	ft_count(char *str, char c)
 	i = -1;
 	c1 = 0;
 	while (str[++i])
-		if ((str[i] != c && str[i] == c) || (str[i] != c && str[i + 1] == '\0'))
+	{	if ((str[i] != c && str[i  + 1] == c) || (str[i] != c && str[i + 1] == '\0'))
 			c1++;
+    }
 	return (c1);
 }
 
@@ -37,12 +24,14 @@ char	*ft_word(int start, int end, char *str)
 	if (!r)
 		return (NULL);
 	while (start < end)
+    {
 		r[++i] = str[start++];
+    }
 	r[size] = 0;
 	return (r);
 }
 
-char	**ft_splt(char *str, char sep, int size)
+char	**ft_splt(char *str, char c, int size)
 {
 	int		i;
 	int		j;
@@ -57,7 +46,7 @@ char	**ft_splt(char *str, char sep, int size)
 		return (NULL);
 	while (str[i])
 	{
-		if (str[i])
+		if (str[i] == c)
 		{
 			i++;
 			continue ;
@@ -68,6 +57,7 @@ char	**ft_splt(char *str, char sep, int size)
 		r[++d] = ft_word(i, j , str);
 		i = j;
 	}
+    r[size] = 0;
 	return (r);
 }
 
@@ -80,7 +70,7 @@ char	**ft_split(char const *s, char c)
 	if (c == '\0')
 	{
 		r = (char **)malloc(2 * sizeof(char *));
-		r[0] = s;
+		r[0] = (char *)s;
 		r[1] = 0;
 		return (r);
 	}
