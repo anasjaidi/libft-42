@@ -67,7 +67,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		s;
 	int		c1;
 	int		c2;
-	int		lamp;
 	char	*ptr;
 
 	if (!s1 || !set)
