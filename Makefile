@@ -6,13 +6,13 @@ CC  = gcc
 CFLAGC = -Wall -Wextra -Werror
 NAME = libft.a
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	ar -crs $@ $^
-bonus: $(OBJS_B)
+bonus: $(OBJS_B) $(OBJS)
 	ar -crs $(NAME) $^
 
 %.o: %.c
@@ -23,4 +23,3 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 re: fclean all
-
