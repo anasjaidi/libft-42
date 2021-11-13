@@ -6,7 +6,7 @@
 /*   By: ajaidi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 22:34:20 by ajaidi            #+#    #+#             */
-/*   Updated: 2021/11/07 20:23:51 by ajaidi           ###   ########.fr       */
+/*   Updated: 2021/11/12 18:07:02 by ajaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		ptr[0] = 0;
 		return (ptr);
 	}
-	ptr = (char *)malloc(len + 1);
+	if (len > (ft_strlen(s) - start))
+		ptr = (char *)malloc(ft_strlen(s) - start + 1);
+	else
+		ptr = (char *)malloc(len + 1);
 	if (!ptr)
 		return (NULL);
 	while (s[start + ++i] && i < len)

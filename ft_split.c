@@ -6,7 +6,7 @@
 /*   By: ajaidi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 19:57:03 by ajaidi            #+#    #+#             */
-/*   Updated: 2021/11/07 20:06:31 by ajaidi           ###   ########.fr       */
+/*   Updated: 2021/11/13 01:16:32 by ajaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_write_word(char *dest, char *src, char c)
 	dest[i] = '\0';
 }
 
-void	ft_write_split(char **split, char *str, char c)
+int	ft_write_split(char **split, char *str, char c)
 {
 	int	i;
 	int	j;
@@ -69,11 +69,14 @@ void	ft_write_split(char **split, char *str, char c)
 			while (ft_is_separator(str[i + j], c) == 0)
 				j++;
 			split[w] = (char *)malloc(sizeof(char) * (j + 1));
+			if (!(split + w))
+				return (0);
 			ft_write_word(split[w], str + i, c);
 			i += j;
 			w++;
 		}
 	}
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
@@ -83,11 +86,17 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	w = ft_words(s, c);
+	w = ft_words((char *)s, c);
 	rtn = (char **)malloc(sizeof(char *) * (w + 1));
 	if (!rtn)
 		return (NULL);
-	ft_write_split(rtn, s, c);
+	if (!(ft_write_split(rtn, (char *) s, c)))
+	{
+		w = -1;
+		while (rtn + ++w)
+			free(rtn + w);
+		free(rtn);
+	}
 	rtn[w] = 0;
 	return (rtn);
 }
